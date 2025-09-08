@@ -68,8 +68,8 @@ const resumeLinks = document.querySelectorAll('#resume-link, #mobile-resume-link
 resumeLinks.forEach(link => {
     link.addEventListener('click', (e) => {
         e.preventDefault();
-        // Path to your resume file
-        const resumeUrl = 'd:/DEPI/Soft Skills/Abdelrahman-Ahmed-Ibrahim-CV.pdf';
+        // Path to your resume file (relative to website root)
+        const resumeUrl = 'assets/Abdelrahman-Ahmed-Ibrahim-CV.pdf';
         window.open(resumeUrl, '_blank');
     });
 });
@@ -90,7 +90,7 @@ function makeResumeLinksClickable() {
                 element.style.textDecoration = 'underline';
                 element.addEventListener('click', (e) => {
                     e.preventDefault();
-                    const resumeUrl = 'd:/DEPI/Soft Skills/Abdelrahman-Ahmed-Ibrahim-CV.pdf';
+                    const resumeUrl = 'assets/Abdelrahman-Ahmed-Ibrahim-CV.pdf';
                     window.open(resumeUrl, '_blank');
                 });
             }
