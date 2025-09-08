@@ -1,0 +1,527 @@
+/* Universal Card Hover Animation */
+.universal-card {
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.35s cubic-bezier(0.4, 0, 0.2, 1), background 0.35s, border-color 0.35s;
+}
+
+.universal-card:hover {
+    transform: translateY(-10px) scale(1.035);
+    background: #f8fafc;
+    border-color: #6366f1;
+    box-shadow: 0 8px 32px 0 rgba(99, 102, 241, 0.10), 0 2px 8px 0 rgba(0, 0, 0, 0.06);
+}
+
+.dark .universal-card:hover {
+    background: linear-gradient(135deg, #312e81 0%, #3730a3 100%);
+    border-color: #a5b4fc;
+    box-shadow: 0 10px 32px 0 rgba(165, 180, 252, 0.18), 0 2px 8px 0 rgba(0, 0, 0, 0.18);
+}
+
+/* Global mobile scrollbar fix */
+* {
+    box-sizing: border-box;
+}
+
+html {
+    overflow-x: hidden;
+    max-width: 100vw;
+}
+
+body {
+    overflow-x: hidden;
+    max-width: 100vw;
+    position: relative;
+}
+
+/* Mobile-first responsive design improvements */
+@media (max-width: 480px) {
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .hero-title {
+        font-size: 2.5rem !important;
+        line-height: 1.2;
+    }
+
+    .hero-subtitle {
+        font-size: 1.125rem !important;
+    }
+
+    .section-padding {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+    }
+
+    .universal-card:hover {
+        transform: translateY(-5px) scale(1.02);
+    }
+
+    /* Mobile portrait container - much smaller */
+    .animated-portrait {
+        width: 200px !important;
+        height: 200px !important;
+    }
+
+    .portrait-image {
+        width: 160px !important;
+        height: 200px !important;
+    }
+
+    /* Disable hover effects on mobile to prevent page width issues */
+    .animated-portrait:hover .portrait-image {
+        transform: none !important;
+    }
+
+    .universal-card:hover {
+        transform: translateY(-2px) scale(1.01) !important;
+    }
+
+    /* Fix mobile scrollbar issues */
+    html,
+    body {
+        overflow-x: hidden !important;
+        max-width: 100vw;
+    }
+
+    /* Remove hero-specific styling that causes issues */
+    #home {
+        overflow: visible;
+        max-width: 100%;
+    }
+
+    #home .container {
+        max-width: 100%;
+        overflow: visible;
+    }
+}
+
+@media (max-width: 640px) {
+    .blob-container {
+        width: 220px !important;
+        height: 220px !important;
+    }
+
+    .profile-image {
+        width: 180px !important;
+        height: 180px !important;
+    }
+
+    .animated-portrait {
+        width: 250px !important;
+        height: 250px !important;
+    }
+
+    .portrait-image {
+        width: 180px !important;
+        height: 240px !important;
+    }
+
+    /* Prevent horizontal overflow on mobile */
+    body {
+        overflow-x: hidden !important;
+    }
+
+    /* Hero section specific fixes */
+    #home {
+        overflow-x: hidden !important;
+        width: 100vw;
+        max-width: 100vw;
+    }
+
+    #home .container {
+        max-width: 100vw;
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+    }
+
+    /* Fix mobile flex layout */
+    #home .flex {
+        flex-wrap: wrap;
+        max-width: 100%;
+    }
+}
+
+/* Improved mobile navigation */
+@media (max-width: 768px) {
+    .mobile-menu-open {
+        display: block !important;
+    }
+
+    .nav-desktop {
+        display: none !important;
+    }
+
+    /* Ensure no horizontal overflow on mobile */
+    html,
+    body {
+        overflow-x: hidden;
+        max-width: 100vw;
+    }
+
+    .container {
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    /* Reduce card hover effects on tablet/mobile */
+    .universal-card:hover {
+        transform: translateY(-3px) scale(1.015) !important;
+    }
+}
+
+/* Project Card Hover Animation */
+.project-card {
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.35s cubic-bezier(0.4, 0, 0.2, 1), background 0.35s, border-color 0.35s;
+}
+
+.project-card:hover {
+    transform: translateY(-10px) scale(1.035);
+    background: #f8fafc;
+    border-color: #6366f1;
+    box-shadow: 0 8px 32px 0 rgba(99, 102, 241, 0.10), 0 2px 8px 0 rgba(0, 0, 0, 0.06);
+}
+
+.dark .project-card:hover {
+    background: linear-gradient(135deg, #312e81 0%, #3730a3 100%);
+    border-color: #a5b4fc;
+    box-shadow: 0 10px 32px 0 rgba(165, 180, 252, 0.18), 0 2px 8px 0 rgba(0, 0, 0, 0.18);
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Animated Blob Portrait Container */
+.animated-portrait {
+    position: relative;
+    width: 400px;
+    height: 400px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.blob-background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #87ceeb, #9370db);
+    border-radius: 63% 37% 54% 46% / 55% 48% 52% 45%;
+    animation: blob-morph 10s ease-in-out infinite;
+    z-index: 1;
+    transition: background 0.3s ease;
+}
+
+.dark .blob-background {
+    background: linear-gradient(135deg, #e0e7ff, #f3e8ff);
+}
+
+.blob-background::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    background: linear-gradient(135deg, #add8e6, #dda0dd);
+    border-radius: 63% 37% 54% 46% / 55% 48% 52% 45%;
+    filter: blur(15px);
+    opacity: 0.8;
+    z-index: -1;
+    animation: blob-morph 10s ease-in-out infinite reverse;
+    transition: background 0.3s ease;
+}
+
+.dark .blob-background::before {
+    background: linear-gradient(135deg, #c7d2fe, #e9d5ff);
+}
+
+.portrait-image {
+    position: relative;
+    width: 240px;
+    height: 320px;
+    object-fit: cover;
+    z-index: 2;
+    transition: transform 0.3s ease;
+    border-radius: 80px;
+}
+
+.animated-portrait:hover .portrait-image {
+    transform: scale(1.05);
+}
+
+@keyframes blob-morph {
+
+    0%,
+    100% {
+        border-radius: 63% 37% 54% 46% / 55% 48% 52% 45%;
+        transform: rotate(0deg);
+    }
+
+    25% {
+        border-radius: 40% 60% 60% 40% / 70% 30% 70% 30%;
+        transform: rotate(90deg);
+    }
+
+    50% {
+        border-radius: 54% 46% 38% 62% / 49% 70% 30% 51%;
+        transform: rotate(180deg);
+    }
+
+    75% {
+        border-radius: 61% 39% 55% 45% / 61% 38% 62% 39%;
+        transform: rotate(270deg);
+    }
+}
+
+.text-gradient {
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    background-image: linear-gradient(to right, #4F46E5, #9333EA);
+}
+
+.section-title {
+    position: relative;
+    display: inline-block;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 4px;
+    background: linear-gradient(to right, #4F46E5, #9333EA);
+    border-radius: 2px;
+    opacity: 0.8;
+    transition: all 0.3s ease;
+}
+
+/* Dynamic widths based on content */
+.section-title[data-title="About Me"]::after {
+    width: 90px;
+}
+
+.section-title[data-title="Skills"]::after {
+    width: 60px;
+}
+
+.section-title[data-title="Services"]::after {
+    width: 85px;
+}
+
+.section-title[data-title="Projects"]::after {
+    width: 85px;
+}
+
+.section-title[data-title="Contact Me"]::after {
+    width: 105px;
+}
+
+/* Hover effect for section titles */
+.section-title:hover::after {
+    opacity: 1;
+    height: 5px;
+    bottom: -13px;
+}
+
+.nav-link::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #6D28D9;
+    transition: width .3s;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.nav-link.active::after {
+    width: 100%;
+    background: linear-gradient(to right, #4F46E5, #9333EA);
+}
+
+.nav-link.active {
+    color: #4F46E5;
+}
+
+.dark .nav-link.active {
+    color: #a855f7;
+}
+
+.resume-btn {
+    background: linear-gradient(to right, #4F46E5, #9333EA);
+    color: white;
+    padding: 0.5rem 1.5rem;
+    border-radius: 9999px;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+.resume-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.dark .resume-btn {
+    box-shadow: 0 4px 6px -1px rgba(255, 255, 255, 0.1), 0 2px 4px -1px rgba(255, 255, 255, 0.06);
+}
+
+/* Modern Custom Scrollbar - Remove Default & Apply Custom */
+::-webkit-scrollbar {
+    width: 14px;
+    height: 14px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    border-radius: 7px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(99, 102, 241, 0.3);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+    box-shadow: 0 4px 8px rgba(99, 102, 241, 0.5);
+    transform: scaleX(1.2);
+}
+
+::-webkit-scrollbar-thumb:active {
+    background: linear-gradient(135deg, #3730a3, #6d28d9);
+}
+
+/* Remove scrollbar arrows/buttons */
+::-webkit-scrollbar-button {
+    display: none;
+    width: 0;
+    height: 0;
+}
+
+/* Dark mode scrollbar */
+.dark ::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #8b5cf6, #a855f7);
+    box-shadow: 0 2px 4px rgba(139, 92, 246, 0.3);
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #7c3aed, #9333ea);
+    box-shadow: 0 4px 8px rgba(139, 92, 246, 0.5);
+}
+
+.dark ::-webkit-scrollbar-thumb:active {
+    background: linear-gradient(135deg, #6d28d9, #7e22ce);
+}
+
+/* Firefox modern scrollbar */
+html {
+    scrollbar-width: auto;
+    scrollbar-color: #6366f1 transparent;
+}
+
+.dark html {
+    scrollbar-color: #8b5cf6 transparent;
+}
+
+/* Hide scrollbar corner */
+::-webkit-scrollbar-corner {
+    background: transparent;
+}
+
+.toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 1rem 2rem;
+    background-color: #4F46E5;
+    color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transform: translateY(100px);
+    opacity: 0;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.toast.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.dark .toast {
+    background-color: #6D28D9;
+}
+
+/* Ensure skill item hover effects work */
+.skill-item {
+    cursor: pointer;
+}
+
+.skill-item:hover {
+    background-color: #4F46E5 !important;
+    color: white !important;
+    transform: translateY(-8px) !important;
+}
+
+.skill-item:hover i,
+.skill-item:hover p {
+    color: white !important;
+}
+
+/* Image Gallery Expand Hover Effect */
+.image-expand-container {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.image-expand-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 10;
+}
+
+.image-expand-container:hover .image-expand-overlay {
+    opacity: 1;
+}
+
+.expand-icon {
+    color: white;
+    font-size: 2rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    transform: scale(1);
+    transition: transform 0.3s ease;
+}
+
+.image-expand-container:hover .expand-icon {
+    transform: scale(1.1);
+}
+
+/* Ensure images maintain aspect ratio */
+.image-expand-container img {
+    transition: transform 0.3s ease;
+}
+
+.image-expand-container:hover img {
+    transform: scale(1.05);
+}

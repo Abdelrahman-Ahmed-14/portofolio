@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPA Calculator - Abdelrahman Ahmed</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {}
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <script>
+        // Initialize theme - default to light mode
+        if (localStorage.theme === 'dark') {
+            document.documentElement.classList.add('dark')
+        } else {
+            // Default to light mode for all other cases
+            localStorage.theme = 'light';
+            document.documentElement.classList.remove('dark')
+        }
+    </script>
+</head>
+
+<body class="bg-gray-100 dark:bg-[#111827] text-gray-800 dark:text-gray-300">
+
+    <!-- Header -->
+    <header id="header"
+        class="bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm fixed w-full top-0 z-50 transition-all duration-300">
+        <nav class="container mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">Abdelrahman<span
+                    class="text-gradient">.</span></a>
+            <div class="flex items-center">
+                <div class="hidden lg:flex space-x-6 xl:space-x-8 items-center">
+                    <a href="index.html#home"
+                        class="nav-link transition duration-300 ease-in-out text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">Home</a>
+                    <a href="index.html#about"
+                        class="nav-link transition duration-300 ease-in-out text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">About</a>
+                    <a href="index.html#skills"
+                        class="nav-link transition duration-300 ease-in-out text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">Skills</a>
+                    <a href="index.html#services"
+                        class="nav-link transition duration-300 ease-in-out text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">Services</a>
+                    <a href="index.html#projects"
+                        class="nav-link transition duration-300 ease-in-out text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">Projects</a>
+                    <a href="index.html#contact"
+                        class="nav-link transition duration-300 ease-in-out text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">Contact</a>
+                    <a href="#" id="resume-link" class="resume-btn ml-4">
+                        <i class="fas fa-file-alt mr-2"></i>Resume
+                    </a>
+                </div>
+                <button id="theme-toggle"
+                    class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white focus:outline-none text-xl ml-6">
+                    <i id="theme-toggle-icon" class="fas"></i>
+                </button>
+                <button id="mobile-menu-button" class="lg:hidden text-gray-800 dark:text-white focus:outline-none ml-4">
+                    <i class="fas fa-bars text-xl sm:text-2xl"></i>
+                </button>
+            </div>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white dark:bg-gray-800 px-4 sm:px-6 pb-4">
+            <a href="index.html#home"
+                class="block py-2 px-4 text-sm text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Home</a>
+            <a href="index.html#about"
+                class="block py-2 px-4 text-sm text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">About</a>
+            <a href="index.html#skills"
+                class="block py-2 px-4 text-sm text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Skills</a>
+            <a href="index.html#services"
+                class="block py-2 px-4 text-sm text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Services</a>
+            <a href="index.html#projects"
+                class="block py-2 px-4 text-sm text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Projects</a>
+            <a href="index.html#contact"
+                class="block py-2 px-4 text-sm text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Contact</a>
+            <a href="#" id="mobile-resume-link"
+                class="block py-2 px-4 text-sm text-indigo-600 dark:text-indigo-400 hover:bg-gray-100 dark:hover:bg-gray-700">
+                <i class="fas fa-file-alt mr-2"></i>Resume
+            </a>
+        </div>
+    </header>
+
+    <main class="pt-20">
+        <!-- Project Hero Section -->
+        <section class="py-16 bg-white dark:bg-gray-800">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">GPA Calculator
+                    </h1>
+                    <p class="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">A client-side academic tool
+                        built with HTML5, CSS3, and JavaScript that enables students to calculate their Grade Point
+                        Average with real-time computation, responsive design, and intuitive user interface.</p>
+
+                    <!-- Tech Stack -->
+                    <div class="flex flex-wrap justify-center gap-2 mt-6">
+                        <span
+                            class="bg-orange-100 text-orange-800 text-sm font-semibold px-3 py-1 rounded-full dark:bg-orange-900 dark:text-orange-300">HTML5</span>
+                        <span
+                            class="bg-blue-100 text-blue-800 text-sm font-semibold px-3 py-1 rounded-full dark:bg-blue-900 dark:text-blue-300">CSS3</span>
+                        <span
+                            class="bg-yellow-100 text-yellow-800 text-sm font-semibold px-3 py-1 rounded-full dark:bg-yellow-900 dark:text-yellow-300">JavaScript</span>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+                        <a href="#"
+                            class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-bold py-3 px-8 rounded-full hover:from-indigo-700 hover:to-purple-700 transition duration-300 transform hover:scale-105">
+                            <i class="fab fa-github mr-2"></i>View on GitHub
+                        </a>
+                        <a href="#"
+                            class="border-2 border-indigo-600 dark:border-indigo-400 text-indigo-600 dark:text-indigo-400 font-bold py-3 px-8 rounded-full hover:bg-indigo-600 hover:text-white transition duration-300 transform hover:scale-105">
+                            <i class="fas fa-external-link-alt mr-2"></i>Live Demo
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Project Screenshots -->
+        <section class="py-16 bg-gray-100 dark:bg-gray-900">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center text-gray-900 dark:text-white mb-12">Application Interface
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Home Interface -->
+                    <div class="universal-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg">
+                        <img src="images/gpa_calculator/home.png" alt="GPA Calculator Home"
+                            class="w-full h-48 object-cover">
+                        <div class="p-4">
+                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Home Interface</h3>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm">Main calculator interface with subject
+                                input</p>
+                        </div>
+                    </div>
+
+                    <!-- Grade Input Screen -->
+                    <div class="universal-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg">
+                        <img src="images/gpa_calculator/Screenshot (34).png" alt="Grade Input"
+                            class="w-full h-48 object-cover">
+                        <div class="p-4">
+                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Add New Semester</h3>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm">Two buttons to start adding new semester
+                                data</p>
+                        </div>
+                    </div>
+
+                    <!-- Subject Management -->
+                    <div class="universal-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg">
+                        <img src="images/gpa_calculator/Screenshot (35).png" alt="Subject Management"
+                            class="w-full h-48 object-cover">
+                        <div class="p-4">
+                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Number of Subjects</h3>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm">Enter the number of subjects in the
+                                semester</p>
+                        </div>
+                    </div>
+
+                    <!-- GPA Calculation -->
+                    <div class="universal-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg">
+                        <img src="images/gpa_calculator/Screenshot (37).png" alt="GPA Calculation"
+                            class="w-full h-48 object-cover">
+                        <div class="p-4">
+                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Subject Input Fields</h3>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm">Dynamic input fields created based on
+                                number of subjects</p>
+                        </div>
+                    </div>
+
+                    <!-- Results Display -->
+                    <div class="universal-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg">
+                        <img src="images/gpa_calculator/Screenshot (38).png" alt="Results Display"
+                            class="w-full h-48 object-cover">
+                        <div class="p-4">
+                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Semester GPA Calculation
+                            </h3>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm">Enter credit hours and grades to
+                                calculate semester GPA</p>
+                        </div>
+                    </div>
+
+                    <!-- Academic Summary -->
+                    <div class="universal-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg">
+                        <img src="images/gpa_calculator/Screenshot (39).png" alt="Academic Summary"
+                            class="w-full h-48 object-cover">
+                        <div class="p-4">
+                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">CGPA Calculation</h3>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm">Calculate Cumulative GPA from all
+                                semesters</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- Back to Projects -->
+        <section class="py-12 bg-gray-100 dark:bg-gray-900">
+            <div class="container mx-auto px-6 text-center">
+                <a href="index.html#projects"
+                    class="inline-flex items-center bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-bold py-3 px-8 rounded-full hover:from-indigo-700 hover:to-purple-700 transition duration-300 transform hover:scale-105">
+                    <i class="fas fa-arrow-left mr-2"></i>Back to Projects
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer
+        class="bg-gradient-to-r from-indigo-600 to-purple-700 dark:from-gray-900 dark:to-indigo-900 border-t dark:border-gray-700">
+        <div class="container mx-auto px-4 sm:px-6 py-8 text-center">
+            <p class="text-white">&copy; 2025 Abdelrahman Ahmed. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Image Modal -->
+    <div id="imageModal"
+        class="fixed inset-0 z-[100] hidden bg-black bg-opacity-90 flex items-center justify-center p-4">
+        <div class="relative max-w-6xl max-h-full w-full h-full flex items-center justify-center">
+            <!-- Close button -->
+            <button id="closeModal"
+                class="absolute top-4 right-4 z-10 text-white hover:text-gray-300 transition-colors">
+                <i class="fas fa-times text-2xl"></i>
+            </button>
+
+            <!-- Navigation buttons -->
+            <button id="prevImage"
+                class="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 text-white hover:text-gray-300 transition-colors bg-black bg-opacity-50 rounded-full p-3 hover:bg-opacity-70">
+                <i class="fas fa-chevron-left text-xl"></i>
+            </button>
+
+            <button id="nextImage"
+                class="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 text-white hover:text-gray-300 transition-colors bg-black bg-opacity-50 rounded-full p-3 hover:bg-opacity-70">
+                <i class="fas fa-chevron-right text-xl"></i>
+            </button>
+
+            <!-- Image container -->
+            <div class="flex flex-col items-center justify-center w-full h-full">
+                <img id="modalImage" src="" alt="" class="max-w-full max-h-[80vh] object-contain rounded-lg shadow-2xl">
+
+                <!-- Image info -->
+                <div class="mt-4 text-center text-white max-w-2xl">
+                    <h3 id="imageTitle" class="text-xl font-semibold mb-2"></h3>
+                    <p id="imageDescription" class="text-gray-300 text-sm"></p>
+                    <div id="imageCounter" class="mt-2 text-gray-400 text-sm"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/gpa-gallery.js"></script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
